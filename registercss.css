@@ -1,0 +1,359 @@
+/* Main body: center content with flexbox, gradient background, full viewport height, padding. */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #800080, #DDA0DD);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Fixed header: purple background, white text, flex layout, shadow, always at top. */
+header {
+    background: rgba(128, 0, 128, 0.9);
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+
+/* Header navigation links: white, spaced, no underline, color transition on hover. */
+header nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+/* Nav link hover: changes to light purple. */
+header nav a:hover {
+    color: #DDA0DD;
+}
+
+
+/* Disable CSS-drawn icons: use inserted <img> assets instead. */
+    .icon,
+    .icon::before,
+    .icon::after {
+        display: none !important;
+    }
+/* Main form container: white background, rounded, shadow, centered, max width. */
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    margin-top: 80px;
+    box-sizing: border-box;
+}
+
+/* Progress bar: space below for separation. */
+.progress {
+    margin-bottom: 20px;
+    background: #f0f0f0;
+    height: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: #800080;
+    height: 100%;
+    width: 50%;
+    transition: width 0.3s;
+}
+
+.input-group {
+    position: relative;
+    margin: 15px 0;
+}
+
+.input-group input, .input-group select {
+    width: 100%;
+    padding: 15px 40px;
+    border: 2px solid #DDA0DD;
+    border-radius: 25px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.input-group input:focus, .input-group select:focus {
+    border-color: #800080;
+    outline: none;
+}
+
+.icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+
+/* CSS-Only Icons using ::before */
+.icon.envelope::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 12px;
+    border: 2px solid #800080;
+    border-radius: 2px;
+    background: white;
+    top: 2px;
+    left: 2px;
+}
+
+.icon.envelope::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 6px solid #800080;
+    top: -6px;
+    left: 2px;
+}
+
+.icon.lock::before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 10px;
+    border: 2px solid #800080;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    top: 6px;
+    left: 4px;
+}
+
+.icon.lock::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 4px;
+    background: #800080;
+    border-radius: 2px;
+    top: 2px;
+    left: 7px;
+}
+
+.icon.user::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 2px solid #800080;
+    border-radius: 50%;
+    top: 2px;
+    left: 5px;
+}
+
+.icon.user::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 8px;
+    background: #800080;
+    border-radius: 6px 6px 0 0;
+    top: 12px;
+    left: 4px;
+}
+
+.icon.users::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border: 2px solid #800080;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+}
+
+.icon.users::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border: 2px solid #800080;
+    border-radius: 50%;
+    top: 2px;
+    left: 10px;
+}
+
+.icon.heart::before {
+    content: '♥';
+    color: white;
+    font-size: 1.2em;
+}
+
+.icon.home::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 8px solid white;
+    top: 2px;
+    left: 7px;
+}
+
+.icon.home::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 6px;
+    background: white;
+    top: 10px;
+    left: 6px;
+}
+
+.icon.calendar::before {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 12px;
+    border: 2px solid white;
+    border-radius: 2px;
+    top: 4px;
+    left: 3px;
+}
+
+.icon.calendar::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    background: white;
+    top: 2px;
+    left: 5px;
+}
+
+.icon.chart::before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 10px;
+    background: white;
+    top: 5px;
+    left: 4px;
+    clip-path: polygon(0 100%, 25% 0, 50% 50%, 75% 25%, 100% 75%);
+}
+
+.icon.signin::before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 8px;
+    border: 2px solid white;
+    border-radius: 2px;
+    top: 6px;
+    left: 4px;
+}
+
+.icon.signin::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 6px;
+}
+
+.icon.google::before {
+    content: 'G';
+    color: #333;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.icon.facebook::before {
+    content: 'f';
+    color: #333;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: none;
+}
+
+button {
+    background: linear-gradient(45deg, #800080, #DDA0DD);
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    width: 100%;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+
+button:hover {
+    background: #DDA0DD;
+}
+
+.social-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.social-buttons button {
+    width: 48%;
+    background: #f0f0f0;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+    box-sizing: border-box;
+}
+
+.social-buttons button:hover {
+    background: #ddd;
+}
+
+a {
+    color: #800080;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+    text-align: left;
+}
