@@ -1,0 +1,147 @@
+/* Main body: center content with flexbox, gradient background, full viewport height, padding. */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #800080, #DDA0DD);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Fixed header: purple background, white text, flex layout, shadow, always at top. */
+header {
+    background: rgba(128, 0, 128, 0.9);
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+
+/* Header navigation links: white, spaced, no underline, color transition on hover. */
+header nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+/* Nav link hover: changes to light purple. */
+header nav a:hover {
+    color: #DDA0DD;
+}
+
+/* Main form container: white background, rounded, shadow, centered, max width. */
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    margin-top: 80px;
+    box-sizing: border-box;
+}
+
+/* Input group: relative positioning for icons, vertical margin. */
+.input-group {
+    position: relative;
+    margin: 20px 0;
+}
+
+/* Input field: full width, extra padding for icons, purple border. */
+.input-group input {
+    width: 100%;
+    padding: 15px 40px;
+    border: 2px solid #DDA0DD;
+    border-radius: 25px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.input-group input:focus {
+    border-color: #800080;
+    outline: none;
+}
+
+.error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: none;
+}
+
+button {
+    background: linear-gradient(45deg, #800080, #DDA0DD);
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    width: 100%;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+
+button:hover {
+    background: #DDA0DD;
+}
+
+.social-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.social-buttons button {
+    width: 48%;
+    background: #f0f0f0;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+    box-sizing: border-box;
+}
+
+.social-buttons button:hover {
+    background: #ddd;
+}
+
+a {
+    color: #800080;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+    text-align: left;
+}
+
+/* Disable CSS-drawn icons sitewide where this stylesheet is used */
+.icon,
+.icon::before,
+.icon::after {
+    display: none !important;
+}
