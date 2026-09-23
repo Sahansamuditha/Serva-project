@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #58000f;
+  --primary-container: #7a1521;
+  --surface: #ffffff;
+  --surface-dim: #f1f5f9;
+  --card-bg: #ffffff;
+  --text-main: #241919;
+  --text-muted: #574141;
+  --border-subtle: #e2e8f0;
+  --border-maroon: #debfbf;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #ffffff;
+  color: #241919;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #debfbf;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a7373e;
+}
+
+/* Focus rings with soft maroon glow */
+.input-focus {
+  @apply transition-all duration-150 border border-slate-200 focus:border-[#7a1521] focus:ring-4 focus:ring-[#7a1521]/10 focus:outline-none bg-slate-50/50;
+}
+
+/* Standard cards */
+.admin-card {
+  @apply bg-white rounded-xl border border-slate-200/80 shadow-[0px_1px_3px_rgba(0,0,0,0.04),0px_4px_6px_rgba(0,0,0,0.01)];
+}
+
+/* Status Pill Badges */
+.badge-pending {
+  @apply bg-amber-50 text-amber-700 border border-amber-200/60 font-medium px-2.5 py-0.5 rounded-full text-xs;
+}
+
+.badge-in-progress {
+  @apply bg-blue-50 text-blue-700 border border-blue-200/60 font-medium px-2.5 py-0.5 rounded-full text-xs;
+}
+
+.badge-completed {
+  @apply bg-emerald-50 text-emerald-700 border border-emerald-200/60 font-medium px-2.5 py-0.5 rounded-full text-xs;
+}
+
+.badge-overdue, .badge-critical {
+  @apply bg-red-50 text-red-700 border border-red-200/60 font-medium px-2.5 py-0.5 rounded-full text-xs;
+}
+
+.badge-scheduled {
+  @apply bg-orange-50 text-orange-700 border border-orange-200/60 font-medium px-2.5 py-0.5 rounded-full text-xs;
+}
+
+.badge-idle {
+  @apply bg-slate-100 text-slate-600 border border-slate-200 font-medium px-2.5 py-0.5 rounded-full text-xs;
+}
+
+/* Modal backdrop blur */
+.modal-overlay {
+  @apply fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-all duration-200;
+}

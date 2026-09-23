@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Production Build Output (dist folders)
+**/dist/
+Admin/client/dist/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE & Editor Configurations (vscode, etc.)
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+
+# OS Generated files
+.DS_Store
+Thumbs.db
