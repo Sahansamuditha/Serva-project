@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "ITUM Serva - Maintenance Officer",
+    "slug": "serva-maintenance-officer",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/campus_logo.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#7a1521"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#7a1521"
+      }
+    },
+    "web": {
+      "favicon": "./assets/campus_logo.png"
+    }
+  }
+}
