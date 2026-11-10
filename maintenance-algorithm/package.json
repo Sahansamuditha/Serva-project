@@ -1,0 +1,18 @@
+{
+  "name": "maintenance-task-priority-algorithm",
+  "version": "1.0.0",
+  "description": "University Maintenance Monitoring and Management Platform - Task Priority Ranking Algorithm",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js",
+    "start": "node test.js"
+  },
+  "keywords": [
+    "maintenance",
+    "priority-ranking",
+    "algorithm",
+    "facilities-management"
+  ],
+  "author": "",
+  "license": "ISC"
+}

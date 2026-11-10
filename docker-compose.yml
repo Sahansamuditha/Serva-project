@@ -1,0 +1,104 @@
+services:
+  # 1. MySQL 8.0 Database Service
+  mysql:
+    image: mysql:8.0
+    container_name: serva_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: serva_root_pass
+      MYSQL_DATABASE: serva_db
+      MYSQL_USER: serva_user
+      MYSQL_PASSWORD: serva_secret
+    command: --sort-buffer-size=32M --max-allowed-packet=64M
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./Web application/database/init.sql:/docker-entrypoint-initdb.d/init.sql:ro"
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: [ "CMD-SHELL", "mysqladmin ping -h localhost -u serva_user -pserva_secret || exit 1" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 15s
+
+  # 2. Central Backend API Service
+  backend:
+    build:
+      context: "./Web application/backend"
+      dockerfile: Dockerfile
+    container_name: serva_backend
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: serva_user
+      DB_PASSWORD: serva_secret
+      DB_NAME: serva_db
+      PORT: 5000
+      JWT_SECRET: serva_jwt_secret_key_moratuwa_2026
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:3000}
+      BREVO_API_KEY: ${BREVO_API_KEY:-}
+      BREVO_SENDER_EMAIL: ${BREVO_SENDER_EMAIL:-sahansamuditha0714@gmail.com}
+      BREVO_SENDER_NAME: ${BREVO_SENDER_NAME:-ITUM Serva Admin}
+      BREVO_SMTP_USER: ${BREVO_SMTP_USER:-c0312a001@smtp-brevo.com}
+      BREVO_SMTP_RELAY: ${BREVO_SMTP_RELAY:-smtp-relay.brevo.com}
+      BREVO_SMTP_PORT: ${BREVO_SMTP_PORT:-587}
+      EMAIL_USER: ${EMAIL_USER:-}
+      EMAIL_PASS: ${EMAIL_PASS:-}
+      EMAIL_FROM: ${EMAIL_FROM:-}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_SECURE: ${SMTP_SECURE:-false}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+    ports:
+      - "5000:5000"
+    volumes:
+      - backend_uploads:/app/uploads
+
+  # 3. Web Application Frontend (Admin, Student, Dean, Facility Portals)
+  frontend:
+    build:
+      context: "./Web application/frontend"
+      dockerfile: Dockerfile
+    container_name: serva_frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+
+  # 4. Unified Mobile Portal (Login Page, Labourer & Officer Access)
+  mobile_portal:
+    build:
+      context: "./Mobile application/Labour Mobile/Labour_Mobile"
+      dockerfile: Dockerfile
+    container_name: serva_mobile_portal
+    restart: unless-stopped
+    depends_on:
+      - backend
+      - mobile
+    ports:
+      - "3001:3001"
+
+  # 5. Maintenance Officer Mobile Web App
+  mobile:
+    build:
+      context: "./Mobile application/Maintaince officer mobile"
+      dockerfile: Dockerfile
+    container_name: serva_mobile
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "8081:8081"
+
+volumes:
+  mysql_data:
+    driver: local
+  backend_uploads:
+    driver: local
